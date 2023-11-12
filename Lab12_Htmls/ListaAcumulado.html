@@ -35,6 +35,7 @@
     <br>
     <br>
     <table class="table table-sm text-center">
+        <thead>
         <tr>
             <th class="align-middle">Id del Equipo</th>
             <th class="align-middle">Nombre</th>
@@ -48,20 +49,131 @@
             <th class="align-middle">Puntos</th>
             <th class="align-middle">Ver</th>
         </tr>
-        <tr>
-            <td class="align-middle">Probando123</td>
-            <td class="align-middle">3</td>
-            <td class="align-middle">4</td>
-            <td class="align-middle">5</td>
-            <td class="align-middle">6</td>
-            <td class="align-middle">7</td>
-            <td class="align-middle">8</td>
-            <td class="align-middle">9</td>
-            <td class="align-middle">10</td>
-            <td class="align-middle">11</td>
-            <td class="align-middle"><a class="btn btn-success">Más detalles</a></td>
-        </tr>
+        </thead>
+        <tbody id="tabla-equipos-body">
+        <!-- Aquí se insertarán los datos mediante JavaScript -->
+        </tbody>
     </table>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8000/api/equipos"
+            }).done(function (response) {
+                // Limpia la tabla antes de agregar nuevos datos
+                $("#tabla-equipos-body").empty();
+
+                // Itera sobre los datos y agrega filas a la tabla
+                $.each(response, function (index, equipo) {
+                    var row = "<tr>" +
+                        "<td>" + equipo.id + "</td>" +<!DOCTYPE html>
+                    <html lang="en">
+                        <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
+                        <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+    <title>Lista Clausura 2023</title>
+    </head>
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Liga 1 2023</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ListaApertura.html">Resultados Apertura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="ListaClausura.html">Resultados Clausura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ListaAcumulado.html">Resultados Acumulado</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <br>
+        <h1>Lista Clausura 2023</h1>
+        <br>
+        <br>
+        <table class="table table-sm text-center">
+            <thead>
+            <tr>
+                <th class="align-middle">#</th>
+                <th class="align-middle">Nombre</th>
+                <th class="align-middle">Partidos Jugados</th>
+                <th class="align-middle">Partidos Ganados</th>
+                <th class="align-middle">Partidos Perdidos</th>
+                <th class="align-middle">Partidos Empatados</th>
+                <th class="align-middle">Goles a Favor</th>
+                <th class="align-middle">Goles en Contra</th>
+                <th class="align-middle">Diferencia de Goles</th>
+                <th class="align-middle">Puntos</th>
+                <th class="align-middle">Ver</th>
+            </tr>
+            </thead>
+            <tbody id="tabla-equipos-body">
+            <!-- Aquí se insertarán los datos mediante JavaScript -->
+            </tbody>
+        </table>
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:8000/api/liga"
+                }).done(function (response) {
+                    // Limpia la tabla antes de agregar nuevos datos
+                    $("#tabla-equipos-body").empty();
+
+                    // Itera sobre los datos y agrega filas a la tabla
+                    $.each(response, function (index, liga) {
+                        if (liga.liga==2){
+                            var row = "<tr>" +
+                                "<td>" + (index+1) + "</td>" +
+                                "<td>" + liga.equipo.nombre + "</td>" +
+                                "<td>" + liga.partidos_jugados + "</td>" +
+                                "<td>" + liga.partidos_ganados + "</td>" +
+                                "<td>" + liga.partidos_perdidos + "</td>" +
+                                "<td>" + liga.partidos_empatados + "</td>" +
+                                "<td>" + liga.goles_favor + "</td>" +
+                                "<td>" + liga.goles_contra + "</td>" +
+                                "<td>" + liga.goles_diferencia + "</td>" +
+                                "<td>" + liga.puntos + "</td>" +
+                                "<td><button class='btn btn-primary' onclick='verEquipo(" + liga.equipo.id + ")'>Ver</button></td>" +
+                                "</tr>";
+                            $("#tabla-equipos-body").append(row);
+                        }
+                    });
+                }).fail(function(err){
+                    console.log(err);
+                    alert("Ocurrió un error al cargar la página");
+                });
+            });
+        </script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
+"<td>" + equipo.nombre + "</td>" +
+                        "<td>" + equipo.descripcion + "</td>" +
+                        // Agrega más celdas según los datos que recibas
+                        "</tr>";
+                    $("#tabla-equipos-body").append(row);
+                });
+            }).fail(function(err){
+                console.log(err);
+                alert("Ocurrió un error al cargar la página");
+            });
+        });
+    </script>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
