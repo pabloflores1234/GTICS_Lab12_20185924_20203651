@@ -88,12 +88,12 @@
             dataType: "json"
         })
             .done(function (equipo) {
-                const newRow = $("<tr>");
-                newRow.append($("<td>").text(equipo.id).addClass("align-middle"));
-                newRow.append($("<td>").text(equipo.nombre).addClass("align-middle"));
-                newRow.append($("<td>").text(equipo.estadio).addClass("align-middle"));
+                const nuevafila = $("<tr>");
+                nuevafila.append($("<td>").text(equipo.id).addClass("align-middle"));
+                nuevafila.append($("<td>").text(equipo.nombre).addClass("align-middle"));
+                nuevafila.append($("<td>").text(equipo.estadio).addClass("align-middle"));
 
-                $("#tabla1").append(newRow);
+                $("#tabla1").append(nuevafila);
             })
             .fail(function (err) {
                 console.log(err);
@@ -111,19 +111,19 @@
             .done(function (dataequipos) {
                 for (let i = dataequipos.length - 1; i >= 0; i--) {
                     const resultados = dataequipos[i];
-                    const newRow = $("<tr>");
+                    const nuevafila = $("<tr>");
                     if (resultados.liga == 1) {
                         if(resultados.equipo.id == idactual){
-                            newRow.append($("<td>").text(resultados.partidos_jugados).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.partidos_ganados).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.partidos_perdidos).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.partidos_empatados).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.goles_favor).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.puntos).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_jugados).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_ganados).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_perdidos).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_empatados).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.goles_favor).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.puntos).addClass("align-middle"));
 
-                            $("#tabla2").append(newRow);
+                            $("#tabla2").append(nuevafila);
                         }
                     }
                 }
@@ -144,19 +144,19 @@
             .done(function (dataequipos) {
                 for (let i = dataequipos.length - 1; i >= 0; i--) {
                     const resultados = dataequipos[i];
-                    const newRow = $("<tr>");
+                    const nuevafila = $("<tr>");
                     if (resultados.liga == 2) {
                         if(resultados.equipo.id == idactual){
-                            newRow.append($("<td>").text(resultados.partidos_jugados).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.partidos_ganados).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.partidos_perdidos).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.partidos_empatados).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.goles_favor).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
-                            newRow.append($("<td>").text(resultados.puntos).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_jugados).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_ganados).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_perdidos).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.partidos_empatados).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.goles_favor).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
+                            nuevafila.append($("<td>").text(resultados.puntos).addClass("align-middle"));
 
-                            $("#tabla3").append(newRow);
+                            $("#tabla3").append(nuevafila);
                         }
                     }
                 }

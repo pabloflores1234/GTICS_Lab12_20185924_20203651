@@ -60,26 +60,26 @@
             dataType: "json"
         })
             .done(function (dataequipos) {
-                // let i = dataequipos.length - 1; i >= 0; i--
+                //pa ordenar bien
                 for (let i = dataequipos.length - 1; i >= 0; i--) {
                     const resultados = dataequipos[i];
-                    const newRow = $("<tr>");
+                    const nuevafila = $("<tr>");
                     if (resultados.liga == 1) {
                         console.log(resultados.id);
-                        newRow.append($("<td>").text(resultados.equipo.id).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.equipo.nombre).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.partidos_jugados).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.partidos_ganados).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.partidos_perdidos).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.partidos_empatados).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.goles_favor).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
-                        newRow.append($("<td>").text(resultados.puntos).addClass("align-middle"));
-                        newRow.append($("<td>").append('<a class="btn btn-success" href="MasDetallesApertura.html?id=' + resultados.equipo.id + '">Más detalles</a>').addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.equipo.id).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.equipo.nombre).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.partidos_jugados).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.partidos_ganados).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.partidos_perdidos).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.partidos_empatados).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.goles_favor).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
+                        nuevafila.append($("<td>").text(resultados.puntos).addClass("align-middle"));
+                        nuevafila.append($("<td>").append('<a class="btn btn-success" href="MasDetallesApertura.html?id=' + resultados.equipo.id + '">Más detalles</a>').addClass("align-middle"));
 
 
-                        $("table").append(newRow);
+                        $("table").append(nuevafila);
                     }
                 }
             })

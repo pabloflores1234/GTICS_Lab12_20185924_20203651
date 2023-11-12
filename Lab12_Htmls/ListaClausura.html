@@ -61,15 +61,14 @@
                 method: "GET",
                 url: "http://localhost:8000/api/liga"
             }).done(function (response) {
-                // Ordena los resultados por el ID del equipo de manera ascendente
+                // para ordenar los ids bien
                 response.sort(function (a, b) {
                     return a.equipo.id - b.equipo.id;
                 });
 
-                // Limpia la tabla antes de agregar nuevos datos
+                // vaciar tabla para nuevos datos
                 $("#tabla-equipos-body").empty();
 
-                // Itera sobre los datos y agrega filas a la tabla
                 for (let i = 0; i < response.length; i++) {
                     const liga = response[i];
                     if (liga.liga == 2) {
