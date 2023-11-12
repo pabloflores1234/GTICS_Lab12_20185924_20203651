@@ -115,8 +115,8 @@
                                 var url = "MasDetallesClausura.html" +
                                     "?nombre=" + encodeURIComponent(equipoDetalles1.nombre) +
                                     "&estadio=" + encodeURIComponent(equipoDetalles1.estadio) +
-                                    "&puntos=" + encodeURIComponent(liga.puntos);
-
+                                    "&puntos=" + encodeURIComponent(liga.puntos) +
+                                    "&id=" + encodeURIComponent(equipoId);
                                 // Redirige a la nueva página
                                 window.location.href = url;
                             }
