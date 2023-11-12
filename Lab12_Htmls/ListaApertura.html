@@ -36,7 +36,7 @@
     <br>
     <table class="table table-sm text-center">
         <tr>
-            <th class="align-middle">Id del Equipo</th>
+            <th class="align-middle">ID del equipo</th>
             <th class="align-middle">Nombre</th>
             <th class="align-middle">Partidos Jugados</th>
             <th class="align-middle">Partidos Ganados</th>
@@ -76,7 +76,8 @@
                         newRow.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
                         newRow.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
                         newRow.append($("<td>").text(resultados.puntos).addClass("align-middle"));
-                        newRow.append($("<td>").append('' + resultados.equipo.id +'<a class="btn btn-success" href="MasDetallesApertura.html?id=&lg=">Más detalles</a>'+ resultados.liga +'').addClass("align-middle"));
+                        newRow.append($("<td>").append('<a class="btn btn-success" href="MasDetallesApertura.html?id=' + resultados.equipo.id + '">Más detalles</a>').addClass("align-middle"));
+
 
                         $("table").append(newRow);
                     }
@@ -88,10 +89,5 @@
             });
     });
 </script>
-
-
-
-
-
 </body>
 </html>

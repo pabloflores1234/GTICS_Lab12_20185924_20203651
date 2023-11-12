@@ -38,7 +38,7 @@
     <table class="table table-sm text-center">
         <thead>
         <tr>
-            <th class="align-middle">#</th>
+            <th class="align-middle">ID del equipo</th>
             <th class="align-middle">Nombre</th>
             <th class="align-middle">Partidos Jugados</th>
             <th class="align-middle">Partidos Ganados</th>
@@ -61,33 +61,40 @@
                 method: "GET",
                 url: "http://localhost:8000/api/liga"
             }).done(function (response) {
+                // Ordena los resultados por el ID del equipo de manera ascendente
+                response.sort(function (a, b) {
+                    return a.equipo.id - b.equipo.id;
+                });
+
                 // Limpia la tabla antes de agregar nuevos datos
                 $("#tabla-equipos-body").empty();
 
                 // Itera sobre los datos y agrega filas a la tabla
-                $.each(response, function (index, liga) {
-                    if (liga.liga==2){
+                for (let i = 0; i < response.length; i++) {
+                    const liga = response[i];
+                    if (liga.liga == 2) {
                         var row = "<tr>" +
-                            "<td>" + (index+1) + "</td>" +
-                            "<td>" + liga.equipo.nombre + "</td>" +
-                            "<td>" + liga.partidos_jugados + "</td>" +
-                            "<td>" + liga.partidos_ganados + "</td>" +
-                            "<td>" + liga.partidos_perdidos + "</td>" +
-                            "<td>" + liga.partidos_empatados + "</td>" +
-                            "<td>" + liga.goles_favor + "</td>" +
-                            "<td>" + liga.goles_contra + "</td>" +
-                            "<td>" + liga.goles_diferencia + "</td>" +
-                            "<td>" + liga.puntos + "</td>" +
-                            "<td><button class='btn btn-primary' onclick='verEquipo(" + liga.equipo.id + ")'>Ver</button></td>" +
+                            "<td class='align-middle'>" + liga.equipo.id + "</td>" +
+                            "<td class='align-middle'>" + liga.equipo.nombre + "</td>" +
+                            "<td class='align-middle'>" + liga.partidos_jugados + "</td>" +
+                            "<td class='align-middle'>" + liga.partidos_ganados + "</td>" +
+                            "<td class='align-middle'>" + liga.partidos_perdidos + "</td>" +
+                            "<td class='align-middle'>" + liga.partidos_empatados + "</td>" +
+                            "<td class='align-middle'>" + liga.goles_favor + "</td>" +
+                            "<td class='align-middle'>" + liga.goles_contra + "</td>" +
+                            "<td class='align-middle'>" + liga.goles_diferencia + "</td>" +
+                            "<td class='align-middle'>" + liga.puntos + "</td>" +
+                            "<td class='align-middle'><button class='btn btn-success' onclick='verEquipo(" + liga.equipo.id + ")'>Más Detalles</button></td>" +
                             "</tr>";
                         $("#tabla-equipos-body").append(row);
                     }
-                });
-            }).fail(function(err){
+                }
+            }).fail(function (err) {
                 console.log(err);
                 alert("Ocurrió un error al cargar la página");
             });
         });
+
 
         // Función para manejar el evento de clic en el botón "Ver"
         function verEquipo(equipoId) {
