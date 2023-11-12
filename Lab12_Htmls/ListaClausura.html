@@ -106,7 +106,13 @@
                     $.each(equipoDetalles2, function (index, liga) {
                         if(liga.liga==1){
                             if(liga.equipo.id==equipoId){
-                                mostrarDetallesModal(equipoDetalles1,liga.puntos);
+                                var url = "MasDetallesClausura.html" +
+                                    "?nombre=" + encodeURIComponent(equipoDetalles1.nombre) +
+                                    "&estadio=" + encodeURIComponent(equipoDetalles1.estadio) +
+                                    "&puntos=" + encodeURIComponent(liga.puntos);
+
+                                // Redirige a la nueva página
+                                window.location.href = url;
                             }
                         }
                     });
@@ -120,29 +126,6 @@
             });
         }
 
-        // Función para mostrar los detalles del equipo en una ventana emergente (modal)
-        function mostrarDetallesModal(equipoDetalles,puntos) {
-            // Crear el contenido HTML para la ventana emergente
-            var modalContent = "<div><h2>" + equipoDetalles.nombre + "</h2>";
-            modalContent += "<p>Estadio: " + equipoDetalles.estadio + "</p>";
-            modalContent += "<p>Puntos en apertura: " + puntos + "</p>";
-            // Agrega más detalles según los datos que recibas
-
-            // Crea el modal y establece el contenido
-            var modal = $('<div class="modal fade" id="equipoModal" tabindex="-1" role="dialog" aria-labelledby="equipoModalLabel" aria-hidden="true"></div>');
-            modal.html('<div class="modal-dialog"><div class="modal-content">' + modalContent + '</div></div>');
-
-            // Agrega el modal al final del cuerpo del documento
-            $('body').append(modal);
-
-            // Muestra el modal
-            $('#equipoModal').modal('show');
-
-            // Elimina el modal del DOM cuando se cierra
-            $('#equipoModal').on('hidden.bs.modal', function () {
-                $(this).remove();
-            });
-        }
     </script>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
