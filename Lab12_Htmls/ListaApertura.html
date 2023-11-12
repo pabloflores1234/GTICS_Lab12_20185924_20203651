@@ -60,11 +60,12 @@
             dataType: "json"
         })
             .done(function (dataequipos) {
-                // Reverse the order of the loop
+                // let i = dataequipos.length - 1; i >= 0; i--
                 for (let i = dataequipos.length - 1; i >= 0; i--) {
                     const resultados = dataequipos[i];
                     const newRow = $("<tr>");
                     if (resultados.liga == 1) {
+                        console.log(resultados.id);
                         newRow.append($("<td>").text(resultados.equipo.id).addClass("align-middle"));
                         newRow.append($("<td>").text(resultados.equipo.nombre).addClass("align-middle"));
                         newRow.append($("<td>").text(resultados.partidos_jugados).addClass("align-middle"));
@@ -75,7 +76,7 @@
                         newRow.append($("<td>").text(resultados.goles_contra).addClass("align-middle"));
                         newRow.append($("<td>").text(resultados.goles_diferencia).addClass("align-middle"));
                         newRow.append($("<td>").text(resultados.puntos).addClass("align-middle"));
-                        newRow.append($("<td>").append('<a class="btn btn-success">Más detalles</a>').addClass("align-middle"));
+                        newRow.append($("<td>").append('' + resultados.equipo.id +'<a class="btn btn-success" href="MasDetallesApertura.html?id=&lg=">Más detalles</a>'+ resultados.liga +'').addClass("align-middle"));
 
                         $("table").append(newRow);
                     }
